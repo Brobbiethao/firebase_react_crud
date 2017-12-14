@@ -14,7 +14,9 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    database.ref('/').on('value', (snapshot) => {
+    this.dataRef = database.ref('/');
+
+    this.dataRef.on('value', (snapshot) => {
       this.setState({
         data: snapshot.val()
       });
